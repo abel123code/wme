@@ -1,0 +1,110 @@
+"use client";
+
+const reviews = [
+  {
+    name: "Jeraldine Tan",
+    text: "Maythematics has been a game-changer for my daughter, who previously struggled with primary school maths and wasn't doing well. We were worried about her...",
+    rating: 5,
+  },
+  {
+    name: "claudia sng",
+    text: "Teacher May is a patient teacher with strong passion in teaching which really inspired students to push themselves to do well. She will take time off for students who hav...",
+    rating: 5,
+  },
+  {
+    name: "Chloe Teo",
+    text: "I attended the sec4 amath lesson, and through the lessons i managed to improve from a F9 to B3 in 6levels. Super thankful for Teacher May and Teacher Claire for guidin...",
+    rating: 5,
+  },
+  {
+    name: "JIMIN CHOI",
+    text: "I have been sending my daughter, who is in Primary 6, to this place for six months, and her math score has improved significantly from AL4 to AL1. Teacher May is both...",
+    rating: 5,
+  },
+  {
+    name: "Esther Ruth Dino",
+    text: "i love maythematics because the centre is very conducive and its a productive place to learn in! adding on, im under teacher lucas and he is a great teacher!! because...",
+    rating: 5,
+  },
+];
+
+export default function GoogleReviews() {
+  return (
+    <section className="relative py-20 bg-[#A8D8F0] overflow-hidden">
+      {/* Wavy top border */}
+      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
+        <svg className="relative block w-full h-12" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#ffffff"></path>
+        </svg>
+      </div>
+
+      {/* Decorative emoji */}
+      <div className="absolute top-8 right-8 hidden lg:block">
+        <div className="text-6xl">🌟</div>
+      </div>
+
+      <div className="relative z-10">
+        <h2 className="text-4xl md:text-5xl font-bold text-center text-gray-800 mb-12">
+          Google Reviews
+        </h2>
+
+        {/* Reviews Container - Auto-scrolling */}
+        <div className="relative overflow-hidden pb-6">
+          <div className="flex gap-6 animate-scroll-left pl-6">
+            {/* Render reviews twice for seamless loop */}
+            {[...reviews, ...reviews].map((review, index) => (
+            <div
+              key={index}
+              className="flex-shrink-0 w-80 bg-white rounded-2xl p-6 shadow-lg"
+            >
+              {/* Header */}
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  {/* Avatar placeholder - using colored circle */}
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white font-bold">
+                    {review.name.charAt(0)}
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">{review.name}</h3>
+                    <div className="flex items-center gap-1 mt-1">
+                      {[...Array(review.rating)].map((_, i) => (
+                        <svg
+                          key={i}
+                          className="w-4 h-4 fill-yellow-400"
+                          viewBox="0 0 20 20"
+                        >
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                {/* Google Icon */}
+                <svg className="w-6 h-6" viewBox="0 0 48 48">
+                  <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/>
+                  <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/>
+                  <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/>
+                  <path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/>
+                </svg>
+              </div>
+
+              {/* Review Text */}
+              <p className="text-gray-600 text-sm leading-relaxed line-clamp-4">
+                {review.text}
+              </p>
+            </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Wavy bottom border */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none rotate-180">
+        <svg className="relative block w-full h-12" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#ffffff"></path>
+        </svg>
+      </div>
+    </section>
+  );
+}
+
