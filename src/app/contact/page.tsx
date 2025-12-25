@@ -1,20 +1,27 @@
+import Image from "next/image";
+
 export default function ContactPage() {
   return (
     <main className="relative bg-white min-h-screen">
       {/* Hero Section */}
-      <div className="relative w-full h-[75vh] flex items-center justify-center">
+      <div className="relative w-full h-[45vh] md:h-[55vh] lg:h-[75vh] flex items-center justify-center">
         {/* Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-no-repeat"
-          style={{ backgroundImage: 'url(/team-picture.jpg)', backgroundPosition: 'center 30%' }}
-        >
+        <div className="absolute inset-0">
+          <Image
+            src="/team-picture.JPG"
+            alt="Hero background"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[45%_center] md:object-center"
+          />
           <div className="absolute inset-0 bg-gray-900/40"></div>
         </div>
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 mt-4">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-white">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-white">
             Contact Us
           </h1>
-          <p className="text-white/80 text-center mt-4 text-lg max-w-2xl mx-auto">
+          <p className="text-white/80 text-center mt-3 md:mt-4 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
             Have questions? Drop us a message and we'll get back to you as soon as possible!
           </p>
         </div>

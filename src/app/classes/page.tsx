@@ -15,7 +15,7 @@ export default function ClassesPage() {
 
   return (
     <main className="relative bg-white">
-      <div className="relative w-full h-[75vh] bg-[#3B4FDF] flex items-center justify-center">
+      <div className="relative w-full h-[45vh] md:h-[55vh] lg:h-[75vh] bg-[#3B4FDF] flex items-center justify-center">
         {/* Blue Monster Decoration */}
         <div className="absolute bottom-0 left-4 lg:left-8 w-64 h-64 lg:w-[400px] lg:h-[400px] z-0">
           <Image
@@ -28,7 +28,7 @@ export default function ClassesPage() {
         </div>
 
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-white">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-white">
             Our Science & Math Classes
           </h1>
         </div>

@@ -59,9 +59,9 @@ export default function TeamPage() {
   return (
     <main className="relative bg-white">
       {/* Hero Section */}
-      <div className="relative w-full h-[75vh] bg-[#3B4FDF] flex items-center justify-center">
+      <div className="relative w-full h-[45vh] md:h-[55vh] lg:h-[75vh] bg-[#3B4FDF] flex items-center justify-center">
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-white">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-white">
             Our Team
           </h1>
         </div>
