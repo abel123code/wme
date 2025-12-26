@@ -1,9 +1,5 @@
-import Hero from "@/components/Hero";
-import WhatSetsUsApart from "@/components/WhatSetsUsApart";
-import MathTuitionProgrammes from "@/components/MathTuitionProgrammes";
-import Testimonials from "@/components/Testimonials";
-import GoogleReviews from "@/components/GoogleReviews";
 import FAQs from "@/components/FAQs";
+import PageHero from "@/components/PageHero";
 
 const faqsData = [
   {
@@ -78,14 +74,16 @@ const faqsData = [
   },
 ];
 
-export default function Home() {
+export default function FAQsPage() {
   return (
-    <main>
-      <Hero />
-      <WhatSetsUsApart />
-      <MathTuitionProgrammes />
-      <Testimonials />
-      <GoogleReviews />
+    <main className="relative bg-white">
+      <PageHero 
+        image="/faq-banner.jpg"
+        imageAlt="FAQs banner"
+        showOverlay={false}
+      />
+      <FAQs faqs={faqsData} />
     </main>
   );
 }
+

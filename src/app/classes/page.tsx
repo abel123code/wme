@@ -1,11 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
+import Image from "next/image";
 import ScienceModal from "@/components/ScienceModal";
 import MathModal from "@/components/MathModal";
 import SecScienceModal from "@/components/SecScienceModal";
 import SecMathModal from "@/components/SecMathModal";
+import PageHero from "@/components/PageHero";
 
 export default function ClassesPage() {
   const [openSection, setOpenSection] = useState<string | null>(null);
@@ -17,26 +18,12 @@ export default function ClassesPage() {
 
   return (
     <main className="relative bg-white">
-      <div className="relative w-full h-[45vh] md:h-[55vh] lg:h-[75vh] flex items-center justify-center">
-        {/* Background Image */}
-        <div className="absolute inset-0 overflow-hidden">
-          <Image
-            src="/classes-hero.JPG"
-            alt="Classes hero background"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover classes-hero-position"
-          />
-          <div className="absolute inset-0 bg-gray-900/40"></div>
-        </div>
-
-        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-white">
-            Our Science & Math Classes
-          </h1>
-        </div>
-      </div>
+      <PageHero 
+        title="Our Science & Math Classes" 
+        image="/classes-hero.JPG"
+        imageAlt="Classes hero background"
+        imagePosition="classes-hero-position"
+      />
 
       {/* Our Classes Section */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -98,6 +85,9 @@ export default function ClassesPage() {
       {/* Schedule Sections */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="max-w-5xl mx-auto">
+        <h2 className="text-4xl md:text-4xl font-bold text-center mb-12 text-gray-900">
+          AY2026 Class Schedule
+        </h2>
         {/* Primary Science & Math Schedule */}
         <div className="mb-6">
           <button
@@ -156,6 +146,28 @@ export default function ClassesPage() {
               />
             </div>
           )}
+        </div>
+
+        {/* AY 2026 Calendar */}
+        <h2 className="text-4xl md:text-4xl font-bold text-center mb-6 mt-6 text-gray-900">
+          AY2026 Calendar
+        </h2>
+        <div className="mb-6">
+          <button
+            onClick={() => {
+              const link = document.createElement('a');
+              link.href = '/Academic Year 2026 Calendar.pdf';
+              link.download = 'Academic Year 2026 Calendar.pdf';
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+            }}
+            className="w-full bg-[#012DE8] text-white p-6 text-center hover:bg-[#021FB8] transition-colors relative rounded-lg"
+          >
+            <h2 className="text-2xl md:text-3xl font-bold">
+              Click Here To Download
+            </h2>
+          </button>
         </div>
         </div>
       </div>

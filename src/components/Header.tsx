@@ -10,13 +10,12 @@ export default function Header() {
 
   const aboutUsSubmenu = [
     { name: "Our Team", href: "/team" },
-    { name: "Our Space", href: "/space" },
-    { name: "Our Story", href: "/story" },
+    { name: "Our Story", href: "/our-story" },
+    { name: "Testimonials", href: "/testimonials" },
   ];
 
   const navItems = [
     { name: "Our Classes", href: "/classes" },
-    { name: "Testimonials", href: "/testimonials" },
     { name: "FAQs", href: "/faqs" },
     { name: "Contact Us", href: "/contact" },
   ];

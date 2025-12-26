@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 interface TeamMemberModalProps {
   isOpen: boolean;
@@ -11,7 +11,6 @@ interface TeamMemberModalProps {
   image: string;
   qualifications: string[];
   bio: string[];
-  tiktokVideoId?: string;
 }
 
 export default function TeamMemberModal({
@@ -22,24 +21,17 @@ export default function TeamMemberModal({
   image,
   qualifications,
   bio,
-  tiktokVideoId,
 }: TeamMemberModalProps) {
-  const [tiktokLoading, setTiktokLoading] = useState(true);
-
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
-      
-      if (tiktokVideoId) {
-        setTiktokLoading(true);
-      }
     } else {
       document.body.style.overflow = "unset";
     }
     return () => {
       document.body.style.overflow = "unset";
     };
-  }, [isOpen, tiktokVideoId]);
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -49,7 +41,7 @@ export default function TeamMemberModal({
       onClick={onClose}
     >
       <div
-        className={`bg-white rounded-3xl w-full max-h-[90vh] overflow-y-auto relative ${tiktokVideoId ? 'max-w-6xl' : 'max-w-4xl'}`}
+        className="bg-white rounded-3xl w-full max-h-[90vh] overflow-y-auto relative max-w-4xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -117,26 +109,6 @@ export default function TeamMemberModal({
               ))}
             </div>
           </div>
-
-          {/* TikTok Embed */}
-          {tiktokVideoId && (
-            <div className="shrink-0 w-full lg:w-[325px] relative min-h-[500px]">
-              {/* Loading UI */}
-              {tiktokLoading && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#E8ECFF] rounded-2xl z-10">
-                  <div className="w-10 h-10 border-4 border-gray-300 border-t-[#012DE8] rounded-full animate-spin mb-3"></div>
-                  <span className="text-[#64748B] text-sm">Loading TikTok...</span>
-                </div>
-              )}
-              <iframe
-                src={`https://www.tiktok.com/embed/v2/${tiktokVideoId}`}
-                className="w-full h-[500px] rounded-2xl"
-                allowFullScreen
-                allow="encrypted-media"
-                onLoad={() => setTiktokLoading(false)}
-              />
-            </div>
-          )}
         </div>
       </div>
     </div>
