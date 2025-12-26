@@ -12,6 +12,7 @@ interface SecScienceModalProps {
   image3?: string;
 }
 
+// Sections data moved outside component to prevent recreation on every render
 const sections = [
   {
     title: "Pre-Covered Notes & Worksheets",
@@ -103,6 +104,7 @@ export default function SecScienceModal({
                         src={`/${imageSrc}`}
                         alt={section.title}
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 33vw, 400px"
                         className="object-cover"
                       />
                     ) : (

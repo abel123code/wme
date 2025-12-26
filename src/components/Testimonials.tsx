@@ -1,21 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { videos } from "@/data/videosData";
 
-const videos = [
-  {
-    title: "Busting Study Myths",
-    videoId: "7495232386288995602", // From https://vt.tiktok.com/ZSPE2C8B1/
-  },
-  {
-    title: "Study Tip",
-    videoId: "7448139951562181909", // From https://vt.tiktok.com/ZSPE29fJf/
-  },
-  {
-    title: "Opening Our New Units",
-    videoId: "7445503871717215495", // From https://vt.tiktok.com/ZSPE2m5Gt/
-  },
-];
+// Videos data extracted to separate file for better dev compile time
 
 export default function Testimonials() {
   const [loadingStates, setLoadingStates] = useState<boolean[]>([true, true, true]);

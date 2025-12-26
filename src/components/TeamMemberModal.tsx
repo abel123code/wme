@@ -72,6 +72,7 @@ export default function TeamMemberModal({
               src={image}
               alt={`${name} - ${role}`}
               fill
+              sizes="(max-width: 640px) 192px, (max-width: 1024px) 224px, 320px"
               className="object-cover"
             />
           </div>

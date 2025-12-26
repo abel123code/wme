@@ -2,23 +2,25 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAboutUsOpen, setIsAboutUsOpen] = useState(false);
 
-  const aboutUsSubmenu = [
+  // Navigation data memoized to prevent recreation on every render
+  // Using useMemo instead of module-level constants to avoid Turbopack issues
+  const aboutUsSubmenu = useMemo(() => [
     { name: "Our Team", href: "/team" },
     { name: "Our Story", href: "/our-story" },
     { name: "Testimonials", href: "/testimonials" },
-  ];
+  ], []);
 
-  const navItems = [
+  const navItems = useMemo(() => [
     { name: "Our Classes", href: "/classes" },
     { name: "FAQs", href: "/faqs" },
     { name: "Contact Us", href: "/contact" },
-  ];
+  ], []);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">

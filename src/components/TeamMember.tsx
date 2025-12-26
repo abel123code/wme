@@ -11,6 +11,7 @@ interface TeamMemberProps {
   qualifications?: string[];
   imagePosition?: string;
   onReadMore?: () => void;
+  priority?: boolean;
 }
 
 export default function TeamMember({ 
@@ -19,7 +20,8 @@ export default function TeamMember({
   image,
   qualifications,
   imagePosition = "center",
-  onReadMore
+  onReadMore,
+  priority = false
 }: TeamMemberProps) {
   const [imageLoading, setImageLoading] = useState(true);
 
@@ -39,6 +41,8 @@ export default function TeamMember({
             src={image}
             alt={`${name} - ${role}`}
             fill
+            sizes="(max-width: 640px) 100vw, 160px"
+            priority={priority}
             style={{ objectPosition: imagePosition }}
             className={`object-cover transition-opacity duration-300 ${imageLoading ? 'opacity-0' : 'opacity-100'}`}
             onLoad={() => setImageLoading(false)}

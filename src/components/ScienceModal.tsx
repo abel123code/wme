@@ -67,6 +67,7 @@ export default function ScienceModal({ isOpen, onClose }: ScienceModalProps) {
                   alt="Students doing experiments"
                   width={400}
                   height={300}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 33vw, 400px"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -76,6 +77,7 @@ export default function ScienceModal({ isOpen, onClose }: ScienceModalProps) {
                   alt="Students doing experiments"
                   width={400}
                   height={300}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 33vw, 400px"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -85,6 +87,7 @@ export default function ScienceModal({ isOpen, onClose }: ScienceModalProps) {
                   alt="Students doing experiments"
                   width={400}
                   height={300}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 33vw, 400px"
                   className="w-full h-full object-cover"
                 />
               </div>

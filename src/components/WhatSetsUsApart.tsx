@@ -33,6 +33,7 @@ export default function WhatSetsUsApart({
                   src={`/${image1}`}
                   alt="Small Classes, Big Engagement"
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 33vw, 400px"
                   className="object-cover"
                 />
               ) : (
@@ -58,6 +59,7 @@ export default function WhatSetsUsApart({
                   src={`/${image2}`}
                   alt="Passionate & dedicated teachers"
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 33vw, 400px"
                   className="object-cover"
                 />
               ) : (
@@ -83,6 +85,7 @@ export default function WhatSetsUsApart({
                   src={`/${image3}`}
                   alt="Curriculum design for success"
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 33vw, 400px"
                   className="object-cover"
                 />
               ) : (
