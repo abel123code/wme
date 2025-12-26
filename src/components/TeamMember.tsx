@@ -1,6 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
+import { ImageSkeleton } from "./Skeletons";
 
 interface TeamMemberProps {
   name: string;
@@ -19,6 +21,8 @@ export default function TeamMember({
   imagePosition = "center",
   onReadMore
 }: TeamMemberProps) {
+  const [imageLoading, setImageLoading] = useState(true);
+
   return (
     <div
       className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-full"
@@ -26,12 +30,19 @@ export default function TeamMember({
       <div className="flex flex-col sm:flex-row p-4 sm:p-5 gap-4 h-full">
         {/* Image Section */}
         <div className="relative w-full sm:w-40 aspect-[3/4] sm:aspect-auto sm:h-full sm:min-h-[250px] rounded-2xl overflow-hidden shrink-0">
+          {imageLoading && (
+            <div className="absolute inset-0">
+              <ImageSkeleton aspectRatio="aspect-[3/4] sm:aspect-auto" />
+            </div>
+          )}
           <Image
             src={image}
             alt={`${name} - ${role}`}
             fill
             style={{ objectPosition: imagePosition }}
-            className="object-cover"
+            className={`object-cover transition-opacity duration-300 ${imageLoading ? 'opacity-0' : 'opacity-100'}`}
+            onLoad={() => setImageLoading(false)}
+            onError={() => setImageLoading(false)}
           />
         </div>
 

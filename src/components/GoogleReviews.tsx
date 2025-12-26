@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { ReviewCardSkeleton } from "./Skeletons";
 
 interface Review {
   reviewId: string;
@@ -95,8 +96,17 @@ export default function GoogleReviews() {
 
         {/* Reviews Container - Auto-scrolling */}
         <div className="relative overflow-hidden pb-6">
-          <div className="flex gap-6 animate-scroll-right" style={{ width: 'max-content' }}>
-            {[...reviews, ...reviews].map((review, index) => (
+          {isLoading ? (
+            <div className="flex gap-6">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="flex-shrink-0 w-80">
+                  <ReviewCardSkeleton />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="flex gap-6 animate-scroll-right" style={{ width: 'max-content' }}>
+              {[...reviews, ...reviews].map((review, index) => (
               <div
                 key={`${review.reviewId}-${index}`}
                 className="flex-shrink-0 w-80 bg-white rounded-2xl p-6 shadow-lg"
@@ -146,7 +156,8 @@ export default function GoogleReviews() {
                 </p>
               </div>
             ))}
-          </div>
+            </div>
+          )}
         </div>
 
         {/* View More Button */}

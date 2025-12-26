@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { ReviewCardSkeleton } from "./Skeletons";
 
 interface Review {
   reviewId: string;
@@ -168,9 +169,10 @@ export default function ReviewsSection() {
     return (
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[var(--neutral-bg)]">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center">
-            <div className="inline-block w-8 h-8 border-4 border-gray-300 border-t-[#012DE8] rounded-full animate-spin"></div>
-            <p className="mt-4 text-gray-600">Loading reviews...</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <ReviewCardSkeleton key={i} />
+            ))}
           </div>
         </div>
       </section>

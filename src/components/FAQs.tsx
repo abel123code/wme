@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ReactNode } from "react";
+import { FAQItemSkeleton } from "./Skeletons";
 
 interface FAQItem {
   question: string;
@@ -10,9 +11,10 @@ interface FAQItem {
 
 interface FAQsProps {
   faqs: FAQItem[];
+  loading?: boolean;
 }
 
-export default function FAQs({ faqs }: FAQsProps) {
+export default function FAQs({ faqs, loading = false }: FAQsProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0); // First item open by default
 
   const toggleFAQ = (index: number) => {
@@ -22,8 +24,15 @@ export default function FAQs({ faqs }: FAQsProps) {
   return (
     <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="container mx-auto max-w-4xl">
-        <div className="space-y-4">
-          {faqs.map((faq, index) => (
+        {loading ? (
+          <div className="space-y-4">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <FAQItemSkeleton key={i} />
+            ))}
+          </div>
+        ) : (
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
             <div key={index} className="rounded-lg overflow-hidden">
               {/* Question Button */}
               <button
@@ -84,8 +93,9 @@ export default function FAQs({ faqs }: FAQsProps) {
                 </div>
               )}
             </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
