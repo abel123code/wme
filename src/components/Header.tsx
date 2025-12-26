@@ -26,13 +26,13 @@ export default function Header() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center justify-center">
             <Image
               src="/wme-logo.png"
               alt="Wondrous Mind Education Centre"
-              width={180}
-              height={60}
-              className="h-20 w-auto"
+              width={100}
+              height={80}
+              className="h-13 w-auto object-contain"
               priority
             />
           </Link>
@@ -50,12 +50,12 @@ export default function Header() {
               </button>
               
               {isAboutUsOpen && (
-                <div className="absolute top-full left-0 w-48 bg-[#A8D8F0] rounded-md shadow-lg py-2">
+                <div className="absolute top-full left-0 w-48 bg-[#E8ECFF] rounded-md shadow-lg py-2">
                   {aboutUsSubmenu.map((item) => (
                     <Link
                       key={item.name}
                       href={item.href}
-                      className="block px-4 py-2 text-gray-800 hover:bg-[#7CBFE0] transition-colors"
+                      className="block px-4 py-2 text-[#012DE8] hover:bg-[#012DE8] hover:text-white transition-colors"
                       onClick={() => setIsAboutUsOpen(false)}
                     >
                       {item.name}
@@ -93,16 +93,16 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            className="lg:hidden p-2 rounded-lg hover:bg-[#E8ECFF] transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
-              <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 text-[#012DE8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             ) : (
-              <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 text-[#012DE8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             )}
@@ -111,7 +111,7 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden border-t border-gray-100 pb-4">
+          <div className="lg:hidden border-t border-[#E8ECFF] pb-4">
             <nav className="flex flex-col space-y-1 pt-4">
               {/* About Us with Submenu */}
               <div>
@@ -130,12 +130,12 @@ export default function Header() {
                   </svg>
                 </button>
                 {isAboutUsOpen && (
-                  <div className="bg-gray-50 py-2">
+                  <div className="bg-[#E8ECFF] py-2">
                     {aboutUsSubmenu.map((item) => (
                       <Link
                         key={item.name}
                         href={item.href}
-                        className="block px-8 py-2 text-gray-600 hover:text-gray-900 transition-colors"
+                        className="block px-8 py-2 text-[#334155] hover:text-[#012DE8] transition-colors"
                         onClick={() => {
                           setIsMobileMenuOpen(false);
                           setIsAboutUsOpen(false);

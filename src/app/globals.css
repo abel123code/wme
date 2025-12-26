@@ -3,6 +3,26 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  
+  /* Primary Colors */
+  --primary-blue: #012DE8;
+  --primary-blue-hover: #021FB8;
+  --primary-blue-light: #E8ECFF;
+  
+  /* Accent Colors */
+  --accent-pink: #E83789;
+  --accent-pink-hover: #C92F73;
+  --accent-pink-light: #FDE8F1;
+  --accent-cyan: #00D6FF;
+  --accent-cyan-hover: #00B8DB;
+  --accent-cyan-light: #E6FBFF;
+  
+  /* Neutral Colors */
+  --neutral-bg: #F6F8FC;
+  --neutral-card: #FAFBFF;
+  --text-heading: #012DE8;
+  --text-body: #334155;
+  --text-muted: #64748B;
 }
 
 @theme inline {
@@ -71,20 +91,54 @@ blockquote.tiktok-embed section {
   scrollbar-width: none;
 }
 
-/* Auto-scrolling animation for reviews */
-@keyframes scroll-left {
+/* Auto-scrolling animation for reviews - scrolls right */
+@keyframes scroll-right {
   0% {
-    transform: translateX(0);
-  }
-  100% {
     transform: translateX(-50%);
   }
+  100% {
+    transform: translateX(0%);
+  }
 }
 
-.animate-scroll-left {
-  animation: scroll-left 15s linear infinite;
+.animate-scroll-right {
+  animation: scroll-right 20s linear infinite;
 }
 
-.animate-scroll-left:hover {
+.animate-scroll-right:hover {
   animation-play-state: paused;
+}
+
+/* Hero image responsive positioning */
+.hero-image-position {
+  object-position: 40% 35px; /* Mobile */
+}
+
+@media (min-width: 768px) {
+  .hero-image-position {
+    object-position: center 20px; /* Tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-image-position {
+    object-position: center 0px; /* Desktop */
+  }
+}
+
+/* Classes hero image responsive positioning */
+.classes-hero-position {
+  object-position: center 40px; /* Mobile - move down */
+}
+
+@media (min-width: 768px) {
+  .classes-hero-position {
+    object-position: center -30px; /* Tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  .classes-hero-position {
+    object-position: center 0px; /* Desktop - normal */
+  }
 }

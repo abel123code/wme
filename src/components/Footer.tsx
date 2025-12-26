@@ -1,15 +1,15 @@
 export default function Footer() {
   return (
-    <footer className="bg-[#B8D8D8] text-[#4A4A4A] py-12 mt-16">
+    <footer className="bg-[#F6F8FC] text-[#334155] py-12 mt-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Section - Four Columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Email */}
           <div>
-            <h3 className="font-bold text-lg mb-4">Email</h3>
+            <h3 className="font-bold text-lg mb-4 text-[#012DE8]">Email</h3>
             <a 
               href="mailto:enquiry@wondrousmind.com.sg" 
-              className="text-sm hover:underline"
+              className="text-sm hover:text-[#012DE8] transition-colors"
             >
               enquiry@wondrousmind.com.sg
             </a>
@@ -17,12 +17,12 @@ export default function Footer() {
 
           {/* WhatsApp */}
           <div>
-            <h3 className="font-bold text-lg mb-4">WhatsApp</h3>
+            <h3 className="font-bold text-lg mb-4 text-[#012DE8]">WhatsApp</h3>
             <a 
               href="https://api.whatsapp.com/send?phone=6589518938&text=" 
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm hover:underline"
+              className="text-sm hover:text-[#012DE8] transition-colors"
             >
               +65 8951 8938
             </a>
@@ -30,7 +30,7 @@ export default function Footer() {
 
           {/* Address */}
           <div>
-            <h3 className="font-bold text-lg mb-4">Address</h3>
+            <h3 className="font-bold text-lg mb-4 text-[#012DE8]">Address</h3>
             <div className="text-sm space-y-1">
               <p>1 Jalan Anak Bukit #01-01Q</p>
               <p>Bukit Timah Plaza</p>
@@ -40,7 +40,7 @@ export default function Footer() {
 
           {/* Opening Hours */}
           <div>
-            <h3 className="font-bold text-lg mb-4">Opening Hours</h3>
+            <h3 className="font-bold text-lg mb-4 text-[#012DE8]">Opening Hours</h3>
             <div className="text-sm space-y-1">
               <p>Mon-Fri: 1:00pm - 8:30pm</p>
               <p>Sat-Sun: 9:30am - 5:30pm</p>
@@ -49,14 +49,14 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section - Social Media Icons */}
-        <div className="flex flex-col items-center gap-4 pt-8 border-t border-gray-400">
+        <div className="flex flex-col items-center gap-4 pt-8 border-t border-[#E8ECFF]">
           <div className="flex gap-6">
             {/* Instagram Icon */}
             <a
               href="https://www.instagram.com/wondrousmindeducation?igsh=MTF5a3luOGVlZ2s0NQ%3D%3D&utm_source=qr"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 flex items-center justify-center hover:opacity-70 transition-opacity"
+              className="w-10 h-10 flex items-center justify-center text-[#012DE8] hover:text-[#E83789] transition-colors"
               aria-label="Instagram"
             >
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -69,7 +69,7 @@ export default function Footer() {
               href="https://www.tiktok.com/@wondrousmindeducation?_r=1&_t=ZS-92SmsmnCZYP"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 flex items-center justify-center hover:opacity-70 transition-opacity"
+              className="w-10 h-10 flex items-center justify-center text-[#012DE8] hover:text-[#E83789] transition-colors"
               aria-label="TikTok"
             >
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -82,7 +82,7 @@ export default function Footer() {
               href="https://t.me/wondrousmindeducation"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 flex items-center justify-center hover:opacity-70 transition-opacity"
+              className="w-10 h-10 flex items-center justify-center text-[#012DE8] hover:text-[#00D6FF] transition-colors"
               aria-label="Telegram"
             >
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -92,7 +92,7 @@ export default function Footer() {
           </div>
 
           {/* Copyright */}
-          <p className="text-sm text-center">
+          <p className="text-sm text-center text-[#64748B]">
             © 2025 Wondrous Mind. All rights reserved.
           </p>
         </div>

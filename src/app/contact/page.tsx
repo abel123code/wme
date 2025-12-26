@@ -6,14 +6,14 @@ export default function ContactPage() {
       {/* Hero Section */}
       <div className="relative w-full h-[45vh] md:h-[55vh] lg:h-[75vh] flex items-center justify-center">
         {/* Background Image */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 overflow-hidden">
           <Image
             src="/team-picture.JPG"
             alt="Hero background"
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[45%_center] md:object-center"
+            className="object-cover hero-image-position"
           />
           <div className="absolute inset-0 bg-gray-900/40"></div>
         </div>
@@ -28,15 +28,15 @@ export default function ContactPage() {
       </div>
 
       {/* Contact Section */}
-      <div className="py-16 bg-gray-50">
+      <div className="py-16 bg-[#F6F8FC]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
               {/* Contact Info */}
               <div className="lg:col-span-2 space-y-8">
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h2>
-                  <p className="text-gray-600">
+                  <h2 className="text-2xl font-bold text-[#012DE8] mb-6">Get in Touch</h2>
+                  <p className="text-[#334155]">
                     Ready to start your learning journey? Reach out to us through any of the following channels.
                   </p>
                 </div>
@@ -48,33 +48,33 @@ export default function ContactPage() {
                     href="https://www.google.com/maps/search/1+Jalan+Anak+Bukit+%2301-01Q+Bukit+Timah+Plaza,+588996/@1.3389493,103.7760806,17z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA2N0gBUAM%3D"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 flex items-start gap-4 hover:shadow-md hover:border-[#3B4FDF]/30 transition-all cursor-pointer group"
+                    className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 flex items-start gap-4 hover:shadow-md hover:border-[#012DE8]/30 transition-all cursor-pointer group"
                   >
-                    <div className="w-12 h-12 bg-[#3B4FDF]/10 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#3B4FDF]/20 transition-colors">
-                      <svg className="w-6 h-6 text-[#3B4FDF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-12 h-12 bg-[#E8ECFF] rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#012DE8]/20 transition-colors">
+                      <svg className="w-6 h-6 text-[#012DE8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900 group-hover:text-[#3B4FDF] transition-colors">Location</h3>
-                      <p className="text-gray-600 text-sm mt-1">1 Jalan Anak Bukit #01-01Q, Bukit Timah Plaza S588996</p>
+                      <h3 className="font-semibold text-[#334155] group-hover:text-[#012DE8] transition-colors">Location</h3>
+                      <p className="text-[#64748B] text-sm mt-1">1 Jalan Anak Bukit #01-01Q, Bukit Timah Plaza S588996</p>
                     </div>
                   </a>
 
                   {/* Email */}
                   <a
                     href="mailto:enquiry@wondrousmind.com.sg"
-                    className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 flex items-start gap-4 hover:shadow-md hover:border-[#FF8B8B]/30 transition-all cursor-pointer group"
+                    className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 flex items-start gap-4 hover:shadow-md hover:border-[#E83789]/30 transition-all cursor-pointer group"
                   >
-                    <div className="w-12 h-12 bg-[#FF8B8B]/10 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#FF8B8B]/20 transition-colors">
-                      <svg className="w-6 h-6 text-[#FF8B8B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-12 h-12 bg-[#FDE8F1] rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#E83789]/20 transition-colors">
+                      <svg className="w-6 h-6 text-[#E83789]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900 group-hover:text-[#FF8B8B] transition-colors">Email</h3>
-                      <p className="text-gray-600 text-sm mt-1">enquiry@wondrousmind.com.sg</p>
+                      <h3 className="font-semibold text-[#334155] group-hover:text-[#E83789] transition-colors">Email</h3>
+                      <p className="text-[#64748B] text-sm mt-1">enquiry@wondrousmind.com.sg</p>
                     </div>
                   </a>
 
@@ -83,23 +83,23 @@ export default function ContactPage() {
                     href="https://api.whatsapp.com/send?phone=6589518938&text="
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 flex items-start gap-4 hover:shadow-md hover:border-green-300 transition-all cursor-pointer group"
+                    className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 flex items-start gap-4 hover:shadow-md hover:border-[#00D6FF]/30 transition-all cursor-pointer group"
                   >
-                    <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-green-200 transition-colors">
-                      <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-12 h-12 bg-[#E6FBFF] rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#00D6FF]/20 transition-colors">
+                      <svg className="w-6 h-6 text-[#00D6FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900 group-hover:text-green-600 transition-colors">WhatsApp</h3>
-                      <p className="text-gray-600 text-sm mt-1">+65 8951 8938</p>
+                      <h3 className="font-semibold text-[#334155] group-hover:text-[#00D6FF] transition-colors">WhatsApp</h3>
+                      <p className="text-[#64748B] text-sm mt-1">+65 8951 8938</p>
                     </div>
                   </a>
                 </div>
 
                 {/* Social Links */}
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-3">Follow Us</h3>
+                  <h3 className="font-semibold text-[#012DE8] mb-3">Follow Us</h3>
                   <div className="flex gap-3">
                     {/* Instagram */}
                     <a 

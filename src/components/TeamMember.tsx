@@ -57,21 +57,21 @@ export default function TeamMember({
 
         {/* Content Section */}
         <div className="flex-1 flex flex-col py-2">
-          <h3 className="text-2xl font-bold text-gray-900 mb-3">
+          <h3 className="text-2xl font-bold text-[#012DE8] mb-3">
             {name}
           </h3>
           
-          <div className="flex items-center gap-2 mb-4 pb-4 border-b border-gray-200">
-            <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <div className="flex items-center gap-2 mb-4 pb-4 border-b border-[#E8ECFF]">
+            <svg className="w-5 h-5 shrink-0 text-[#012DE8]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
               <circle cx="12" cy="7" r="4"/>
             </svg>
-            <span className="text-base font-semibold text-gray-900">{role}</span>
+            <span className="text-base font-semibold text-[#334155]">{role}</span>
           </div>
 
           {tagline && (
-            <div className="mb-4 bg-yellow-50 rounded-lg p-3 border-l-4 border-yellow-400">
-              <p className="text-gray-800 text-sm italic font-medium">
+            <div className="mb-4 bg-[#FDE8F1] rounded-lg p-3 border-l-4 border-[#E83789]">
+              <p className="text-[#334155] text-sm italic font-medium">
                 "{tagline}"
               </p>
             </div>
@@ -79,13 +79,13 @@ export default function TeamMember({
 
           {qualifications && qualifications.length > 0 && (
             <div className="flex-1 mb-4">
-              <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">
+              <h4 className="text-xs font-bold text-[#64748B] uppercase tracking-wide mb-2">
                 Accolades
               </h4>
               <ul className="space-y-2">
                 {qualifications.map((qual, index) => (
-                  <li key={index} className="text-gray-700 text-sm leading-relaxed flex items-start gap-2">
-                    <svg className="w-4 h-4 text-green-600 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <li key={index} className="text-[#334155] text-sm leading-relaxed flex items-start gap-2">
+                    <svg className="w-4 h-4 text-[#00D6FF] shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
                     </svg>
                     <span>{qual}</span>
@@ -97,7 +97,7 @@ export default function TeamMember({
 
           <button 
             onClick={onReadMore}
-            className="text-[#4A90E2] font-medium hover:underline self-start"
+            className="text-[#012DE8] font-medium hover:underline self-start"
           >
             Read more
           </button>

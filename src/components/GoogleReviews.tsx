@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 const reviews = [
   {
     name: "Jeraldine Tan",
@@ -30,28 +32,15 @@ const reviews = [
 
 export default function GoogleReviews() {
   return (
-    <section className="relative py-20 bg-[#A8D8F0] overflow-hidden">
-      {/* Wavy top border */}
-      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
-        <svg className="relative block w-full h-12" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#ffffff"></path>
-        </svg>
-      </div>
-
-      {/* Decorative emoji */}
-      <div className="absolute top-8 right-8 hidden lg:block">
-        <div className="text-6xl">🌟</div>
-      </div>
-
+    <section className="relative py-14 bg-[#E8ECFF] overflow-hidden">
       <div className="relative z-10">
-        <h2 className="text-4xl md:text-5xl font-bold text-center text-gray-800 mb-12">
+        <h2 className="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-8">
           Google Reviews
         </h2>
 
         {/* Reviews Container - Auto-scrolling */}
         <div className="relative overflow-hidden pb-6">
-          <div className="flex gap-6 animate-scroll-left pl-6">
-            {/* Render reviews twice for seamless loop */}
+          <div className="flex gap-6 animate-scroll-right" style={{ width: 'max-content' }}>
             {[...reviews, ...reviews].map((review, index) => (
             <div
               key={index}
@@ -61,11 +50,11 @@ export default function GoogleReviews() {
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
                   {/* Avatar placeholder - using colored circle */}
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white font-bold">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#012DE8] to-[#E83789] flex items-center justify-center text-white font-bold">
                     {review.name.charAt(0)}
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900">{review.name}</h3>
+                    <h3 className="font-semibold text-[#334155]">{review.name}</h3>
                     <div className="flex items-center gap-1 mt-1">
                       {[...Array(review.rating)].map((_, i) => (
                         <svg
@@ -89,20 +78,23 @@ export default function GoogleReviews() {
               </div>
 
               {/* Review Text */}
-              <p className="text-gray-600 text-sm leading-relaxed line-clamp-4">
+              <p className="text-[#334155] text-sm leading-relaxed line-clamp-4">
                 {review.text}
               </p>
             </div>
             ))}
           </div>
         </div>
-      </div>
 
-      {/* Wavy bottom border */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none rotate-180">
-        <svg className="relative block w-full h-12" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#ffffff"></path>
-        </svg>
+        {/* View More Button */}
+        <div className="text-center mt-10">
+          <Link
+            href="/testimonials"
+            className="inline-block bg-[#012DE8] hover:bg-[#021FB8] text-white font-semibold text-lg px-10 py-4 rounded-full transition-all transform hover:scale-105 shadow-md"
+          >
+            View More Testimonials
+          </Link>
+        </div>
       </div>
     </section>
   );

@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useState } from "react";
 import ScienceModal from "@/components/ScienceModal";
 import MathModal from "@/components/MathModal";
+import SecScienceModal from "@/components/SecScienceModal";
+import SecMathModal from "@/components/SecMathModal";
 
 export default function ClassesPage() {
   const [openSection, setOpenSection] = useState<string | null>(null);
@@ -15,16 +17,18 @@ export default function ClassesPage() {
 
   return (
     <main className="relative bg-white">
-      <div className="relative w-full h-[45vh] md:h-[55vh] lg:h-[75vh] bg-[#3B4FDF] flex items-center justify-center">
-        {/* Blue Monster Decoration */}
-        <div className="absolute bottom-0 left-4 lg:left-8 w-64 h-64 lg:w-[400px] lg:h-[400px] z-0">
+      <div className="relative w-full h-[45vh] md:h-[55vh] lg:h-[75vh] flex items-center justify-center">
+        {/* Background Image */}
+        <div className="absolute inset-0 overflow-hidden">
           <Image
-            src="/blue-monster.png"
-            alt="Blue Monster"
-            width={400}
-            height={400}
-            className="w-full h-full object-contain"
+            src="/classes-hero.JPG"
+            alt="Classes hero background"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover classes-hero-position"
           />
+          <div className="absolute inset-0 bg-gray-900/40"></div>
         </div>
 
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
@@ -36,47 +40,57 @@ export default function ClassesPage() {
 
       {/* Our Classes Section */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">Our Classes</h2>
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-gray-900">Our Classes</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-12">
           {/* Science Card */}
           <button
             onClick={() => setOpenModal("science")}
-            className="bg-[#A4E4F4] rounded-2xl p-8 flex flex-col items-center justify-center h-[350px] hover:shadow-xl transition-shadow cursor-pointer"
+            className="bg-[#E6FBFF] rounded-2xl p-8 flex flex-col items-center justify-center h-[200px] hover:shadow-xl hover:border-2 hover:border-[#00D6FF] transition-all cursor-pointer border-2 border-transparent"
           >
-            <h3 className="text-xl md:text-2xl font-bold text-[#0D4F5C] mb-2">
-              Primary 3 - 6, Secondary 1-4
+            <h3 className="text-xl md:text-2xl font-bold text-[#012DE8] mb-2">
+              Primary 3 - 6
             </h3>
-            <p className="text-6xl md:text-7xl font-bold text-[#6DD0F0] my-6">SCIENCE</p>
-            <div className="w-32 h-32 mt-auto">
-              <Image
-                src="/blue-monster.png"
-                alt="Science"
-                width={128}
-                height={128}
-                className="w-full h-full object-contain"
-              />
-            </div>
+            <p className="text-4xl font-bold text-[#00D6FF]">SCIENCE</p>
           </button>
 
           {/* Math Card */}
           <button
             onClick={() => setOpenModal("math")}
-            className="bg-[#F4C4E4] rounded-2xl p-8 flex flex-col items-center justify-center h-[350px] hover:shadow-xl transition-shadow cursor-pointer"
+            className="bg-[#FDE8F1] rounded-2xl p-8 flex flex-col items-center justify-center h-[200px] hover:shadow-xl hover:border-2 hover:border-[#E83789] transition-all cursor-pointer border-2 border-transparent"
           >
-            <h3 className="text-xl md:text-2xl font-bold text-[#8B4F8B] mb-2">
-              Primary 3 - 6, Secondary 1-4
+            <h3 className="text-xl md:text-2xl font-bold text-[#012DE8] mb-2">
+              Primary 3 - 6
             </h3>
-            <p className="text-6xl md:text-7xl font-bold text-[#FF8FD0] my-6">MATH</p>
-            <div className="w-32 h-32 mt-auto">
-              <Image
-                src="/science-element-1.png"
-                alt="Math"
-                width={128}
-                height={128}
-                className="w-full h-full object-contain"
-              />
-            </div>
+            <p className="text-4xl font-bold text-[#E83789]">MATH</p>
+          </button>
+
+          {/* Secondary Science Card */}
+          <button
+            onClick={() => setOpenModal("secScience")}
+            className="bg-[#E6FBFF] rounded-2xl p-8 flex flex-col items-center justify-center h-[200px] hover:shadow-xl hover:border-2 hover:border-[#00D6FF] transition-all cursor-pointer border-2 border-transparent"
+          >
+            <h3 className="text-xl md:text-2xl font-bold text-[#012DE8] mb-2">
+              Secondary 1 - 4
+            </h3>
+            <p className="text-3xl md:text-4xl font-bold text-[#00D6FF] text-center leading-tight">
+              SCIENCE<br />
+              <span className="text-2xl md:text-3xl">Pure Chem / Combined Chem</span>
+            </p>
+          </button>
+
+          {/* Secondary Math Card */}
+          <button
+            onClick={() => setOpenModal("secMath")}
+            className="bg-[#FDE8F1] rounded-2xl p-8 flex flex-col items-center justify-center h-[200px] hover:shadow-xl hover:border-2 hover:border-[#E83789] transition-all cursor-pointer border-2 border-transparent"
+          >
+            <h3 className="text-xl md:text-2xl font-bold text-[#012DE8] mb-2">
+              Secondary 1 - 4
+            </h3>
+            <p className="text-3xl md:text-4xl font-bold text-[#E83789] text-center leading-tight">
+              MATH<br />
+              <span className="text-2xl md:text-3xl">A Math / E Math</span>
+            </p>
           </button>
         </div>
       </div>
@@ -88,14 +102,14 @@ export default function ClassesPage() {
         <div className="mb-6">
           <button
             onClick={() => toggleSection("primary")}
-            className="w-full bg-[#0D4F5C] text-white p-6 text-center hover:bg-[#0A3D47] transition-colors relative rounded-lg"
+            className="w-full bg-[#012DE8] text-white p-6 text-center hover:bg-[#021FB8] transition-colors relative rounded-lg"
           >
             <h2 className="text-2xl md:text-3xl font-bold">
               Primary Science & Math schedule
             </h2>
             <div className="absolute left-1/2 -translate-x-1/2 -bottom-4">
               <div
-                className={`w-0 h-0 border-l-20 border-l-transparent border-r-20 border-r-transparent border-t-20 border-t-[#0D4F5C] transition-transform ${
+                className={`w-0 h-0 border-l-20 border-l-transparent border-r-20 border-r-transparent border-t-20 border-t-[#012DE8] transition-transform ${
                   openSection === "primary" ? "rotate-180" : ""
                 }`}
               ></div>
@@ -118,14 +132,14 @@ export default function ClassesPage() {
         <div className="mb-6">
           <button
             onClick={() => toggleSection("secondary")}
-            className="w-full bg-[#0D4F5C] text-white p-6 text-center hover:bg-[#0A3D47] transition-colors relative rounded-lg"
+            className="w-full bg-[#012DE8] text-white p-6 text-center hover:bg-[#021FB8] transition-colors relative rounded-lg"
           >
             <h2 className="text-2xl md:text-3xl font-bold">
               Secondary Science & Math schedule
             </h2>
             <div className="absolute left-1/2 -translate-x-1/2 -bottom-4">
               <div
-                className={`w-0 h-0 border-l-20 border-l-transparent border-r-20 border-r-transparent border-t-20 border-t-[#0D4F5C] transition-transform ${
+                className={`w-0 h-0 border-l-20 border-l-transparent border-r-20 border-r-transparent border-t-20 border-t-[#012DE8] transition-transform ${
                   openSection === "secondary" ? "rotate-180" : ""
                 }`}
               ></div>
@@ -155,6 +169,18 @@ export default function ClassesPage() {
       {/* Math Modal */}
       <MathModal
         isOpen={openModal === "math"}
+        onClose={() => setOpenModal(null)}
+      />
+
+      {/* Secondary Science Modal */}
+      <SecScienceModal
+        isOpen={openModal === "secScience"}
+        onClose={() => setOpenModal(null)}
+      />
+
+      {/* Secondary Math Modal */}
+      <SecMathModal
+        isOpen={openModal === "secMath"}
         onClose={() => setOpenModal(null)}
       />
       
