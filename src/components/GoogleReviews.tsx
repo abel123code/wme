@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ReviewCardSkeleton } from "./Skeletons";
+
+// Google Reviews URL
+const GOOGLE_REVIEWS_URL = "https://www.google.com/search?q=Wondrous+Mind+Education+Centre+Reviews";
 
 interface Review {
   reviewId: string;
@@ -16,39 +17,184 @@ interface Review {
   updateTime?: string;
 }
 
-// Fallback reviews in case API hasn't synced yet
-const fallbackReviews = [
+// Hardcoded reviews
+const reviews: Review[] = [
   {
-    reviewId: "fallback-1",
-    reviewer: { displayName: "Jeraldine Tan", profilePhotoUrl: null },
+    reviewId: "1",
+    reviewer: { displayName: "Miki Teang", profilePhotoUrl: null },
     starRating: "FIVE",
-    comment: "Maythematics has been a game-changer for my daughter, who previously struggled with primary school maths and wasn't doing well. We were worried about her...",
+    comment:
+      "I highly recommend Ms. Nicky for science tuition. She has been incredibly dedicated and effective in helping my child improve. My child’s performance improved dramatically, going from AL4 to AL1 under her guidance. Ms. Nicky goes above and beyond by offering extra lessons on Sundays to address any weak areas, all without any additional charge.",
   },
   {
-    reviewId: "fallback-2",
-    reviewer: { displayName: "claudia sng", profilePhotoUrl: null },
+    reviewId: "2",
+    reviewer: { displayName: "wen wen", profilePhotoUrl: null },
     starRating: "FIVE",
-    comment: "Teacher May is a patient teacher with strong passion in teaching which really inspired students to push themselves to do well. She will take time off for students who hav...",
+    comment:
+      "Teacher Nicky is very responsible and familiar with the MOE curriculum and PSLE exam format. She can grasp the key points quickly and guide students effectively.",
   },
   {
-    reviewId: "fallback-3",
-    reviewer: { displayName: "Chloe Teo", profilePhotoUrl: null },
+    reviewId: "3",
+    reviewer: { displayName: "ZY", profilePhotoUrl: null },
     starRating: "FIVE",
-    comment: "I attended the sec4 amath lesson, and through the lessons i managed to improve from a F9 to B3 in 6levels. Super thankful for Teacher May and Teacher Claire for guidin...",
+    comment: "I love it cuz why not.",
   },
   {
-    reviewId: "fallback-4",
-    reviewer: { displayName: "JIMIN CHOI", profilePhotoUrl: null },
+    reviewId: "4",
+    reviewer: { displayName: "Abby Oh Musical Journey", profilePhotoUrl: null },
     starRating: "FIVE",
-    comment: "I have been sending my daughter, who is in Primary 6, to this place for six months, and her math score has improved significantly from AL4 to AL1. Teacher May is both...",
+    comment:
+      "A small but great tuition centre. The teachers here will put in extra hours before exams to ensure the students are ready.",
   },
   {
-    reviewId: "fallback-5",
-    reviewer: { displayName: "Esther Ruth Dino", profilePhotoUrl: null },
+    reviewId: "5",
+    reviewer: { displayName: "Ken Koh", profilePhotoUrl: null },
     starRating: "FIVE",
-    comment: "i love maythematics because the centre is very conducive and its a productive place to learn in! adding on, im under teacher lucas and he is a great teacher!! because...",
+    comment:
+      "My boy started in March with Wondrous Mind. He went from AL6 to AL1 for maths and Science for PSLE. The teachers are very good!",
+  },
+  {
+    reviewId: "6",
+    reviewer: { displayName: "Leanne Yong", profilePhotoUrl: null },
+    starRating: "FIVE",
+    comment:
+      "Wondrous Mind Education Centre has been a wonderful enrichment centre for my two primary school boys. The teachers are dedicated and supportive.",
+  },
+  {
+    reviewId: "7",
+    reviewer: { displayName: "Madeline Koh", profilePhotoUrl: null },
+    starRating: "FIVE",
+    comment:
+      "It is the BEST tuition centre we have ever come across. We are very grateful to Teacher Nicky and Caroline for their dedication and guidance.",
+  },
+  {
+    reviewId: "8",
+    reviewer: { displayName: "teresa leong", profilePhotoUrl: null },
+    starRating: "FIVE",
+    comment:
+      "Teacher Jeslyn really goes the extra mile, especially during O-Level exam periods, with extensive lessons and strong support.",
+  },
+  {
+    reviewId: "9",
+    reviewer: { displayName: "sujuan liu", profilePhotoUrl: null },
+    starRating: "FIVE",
+    comment:
+      "我的孩子从5年前就跟着Miss Nicky开始补课，受益良多。两位老师经验丰富、细心周到，孩子在O Level化学取得了A1，真心推荐。",
+  },
+  {
+    reviewId: "10",
+    reviewer: { displayName: "D L", profilePhotoUrl: null },
+    starRating: "FIVE",
+    comment:
+      "Teacher Nicky is an excellent, effective and extremely dedicated teacher who truly cares about her students.",
+  },
+  {
+    reviewId: "11",
+    reviewer: { displayName: "c cl", profilePhotoUrl: null },
+    starRating: "FIVE",
+    comment:
+      "A big shout out to Miss Pearly and Miss Nicky for their dedication and guidance in helping my girl achieve AL1 in science.",
+  },
+  {
+    reviewId: "12",
+    reviewer: { displayName: "y24K3nz", profilePhotoUrl: null },
+    starRating: "FIVE",
+    comment:
+      "Wondrous Mind is fun and helps you do better. I went from failing to straight As. It’s like Harry Potter with Asian teaching.",
+  },
+  {
+    reviewId: "13",
+    reviewer: { displayName: "Jasmyn Lee", profilePhotoUrl: null },
+    starRating: "FIVE",
+    comment:
+      "Very good tuition centre. Miss Jeslyn and Miss Carol are super kind, understanding and patient. Highly recommend!",
+  },
+  {
+    reviewId: "14",
+    reviewer: { displayName: "claudia Ang", profilePhotoUrl: null },
+    starRating: "FIVE",
+    comment:
+      "Great tuition centre with kind and understanding teachers that teach very well.",
+  },
+  {
+    reviewId: "15",
+    reviewer: { displayName: "Kaeden Chong", profilePhotoUrl: null },
+    starRating: "FIVE",
+    comment:
+      "I've been with this tuition centre for 4 years. Very promising and delivers good results. Teachers are excellent.",
+  },
+  {
+    reviewId: "16",
+    reviewer: { displayName: "Fat Bear", profilePhotoUrl: null },
+    starRating: "FIVE",
+    comment:
+      "Sent my girls for primary school science tuition and they achieved beyond expectations for PSLE grading.",
+  },
+  {
+    reviewId: "17",
+    reviewer: { displayName: "Emelda Pay Qian Xi (Chijstcs)", profilePhotoUrl: null },
+    starRating: "FIVE",
+    comment:
+      "My experience here for 2 years was very memorable. I joined with weak grades and improved significantly over time.",
+  },
+  {
+    reviewId: "18",
+    reviewer: { displayName: "Ivy Ng", profilePhotoUrl: null },
+    starRating: "FIVE",
+    comment:
+      "My family is really thankful that our paths crossed with Wondrous Mind and Teacher Nicky. She made science interesting and effective.",
+  },
+  {
+    reviewId: "19",
+    reviewer: { displayName: "Raine Chong", profilePhotoUrl: null },
+    starRating: "FIVE",
+    comment:
+      "My son’s confidence in Math and Science shot up after attending Ms Nicky’s lessons. Very thankful for the guidance.",
+  },
+  {
+    reviewId: "20",
+    reviewer: { displayName: "Warren Ng", profilePhotoUrl: null },
+    starRating: "FIVE",
+    comment:
+      "A big thank you to Wondrous Mind and Teacher Nicky for helping my daughter achieve AL1 in her PSLE.",
+  },
+  {
+    reviewId: "21",
+    reviewer: { displayName: "Tommy Yee", profilePhotoUrl: null },
+    starRating: "FIVE",
+    comment:
+      "Both Teacher Carol and Teacher Nicky are great teachers. They showed patience and provided dedicated guidance.",
+  },
+  {
+    reviewId: "22",
+    reviewer: { displayName: "Juliet Ang", profilePhotoUrl: null },
+    starRating: "FIVE",
+    comment:
+      "Teacher Nicky is just amazing. My son joined only 3.5 months before PSLE and enjoyed her lessons very much.",
+  },
+  {
+    reviewId: "23",
+    reviewer: { displayName: "Jennifer Khong", profilePhotoUrl: null },
+    starRating: "FIVE",
+    comment:
+      "This is an amazing tuition centre. Miss Carol brought my daughter from AL6 to AL1 within 6 months. Very grateful.",
+  },
+  {
+    reviewId: "24",
+    reviewer: { displayName: "Rajavelu Govindarajan", profilePhotoUrl: null },
+    starRating: "FIVE",
+    comment:
+      "Dedicated teachers who genuinely care about student outcomes and progress.",
+  },
+  {
+    reviewId: "25",
+    reviewer: { displayName: "Sophie Tian", profilePhotoUrl: null },
+    starRating: "FIVE",
+    comment:
+      "Da best science tuition. Helped me improve my science a lot!",
   },
 ];
+
 
 // Convert star rating string to number
 function getStarCount(rating: string): number {
@@ -63,29 +209,8 @@ function getStarCount(rating: string): number {
 }
 
 export default function GoogleReviews() {
-  const [reviews, setReviews] = useState<Review[]>(fallbackReviews);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchReviews() {
-      try {
-        const response = await fetch("/api/reviews");
-        const data = await response.json();
-        
-        if (data.success && data.reviews && data.reviews.length > 0) {
-          // Take first 10 reviews for the carousel
-          setReviews(data.reviews.slice(0, 10));
-        }
-      } catch (error) {
-        console.log("Using fallback reviews:", error);
-        // Keep fallback reviews
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    fetchReviews();
-  }, []);
+  // Take first 10 reviews for the carousel
+  const displayReviews = reviews.slice(0, 10);
 
   return (
     <section className="relative py-14 bg-[#E8ECFF] overflow-hidden">
@@ -96,20 +221,14 @@ export default function GoogleReviews() {
 
         {/* Reviews Container - Auto-scrolling */}
         <div className="relative overflow-hidden pb-6">
-          {isLoading ? (
-            <div className="flex gap-6">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="flex-shrink-0 w-80">
-                  <ReviewCardSkeleton />
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="flex gap-6 animate-scroll-right" style={{ width: 'max-content' }}>
-              {[...reviews, ...reviews].map((review, index) => (
-              <div
+          <div className="flex gap-6 animate-scroll-right" style={{ width: 'max-content' }}>
+            {[...displayReviews, ...displayReviews].map((review, index) => (
+              <a
                 key={`${review.reviewId}-${index}`}
-                className="flex-shrink-0 w-80 bg-white rounded-2xl p-6 shadow-lg"
+                href={GOOGLE_REVIEWS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-shrink-0 w-80 bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow cursor-pointer block"
               >
                 {/* Header */}
                 <div className="flex items-start justify-between mb-4">
@@ -154,10 +273,9 @@ export default function GoogleReviews() {
                 <p className="text-[#334155] text-sm leading-relaxed line-clamp-4">
                   {review.comment}
                 </p>
-              </div>
+              </a>
             ))}
-            </div>
-          )}
+          </div>
         </div>
 
         {/* View More Button */}

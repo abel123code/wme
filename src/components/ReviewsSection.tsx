@@ -1,7 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { ReviewCardSkeleton } from "./Skeletons";
+import { useState } from "react";
+
+// Google Reviews URL
+const GOOGLE_REVIEWS_URL = "https://maps.google.com/?q=place_id:ChIJ3V1jkgwR2jERTvv9l-GkJao";
 
 interface Review {
   reviewId: string;
@@ -18,6 +20,52 @@ interface Review {
     updateTime: string;
   } | null;
 }
+
+// Hardcoded reviews
+const reviews: Review[] = [
+  {
+    reviewId: "1",
+    reviewer: { displayName: "Jeraldine Tan", profilePhotoUrl: null },
+    starRating: "FIVE",
+    comment: "Maythematics has been a game-changer for my daughter, who previously struggled with primary school maths and wasn't doing well. We were worried about her...",
+    createTime: "2024-01-15T00:00:00Z",
+  },
+  {
+    reviewId: "2",
+    reviewer: { displayName: "Claudia Sng", profilePhotoUrl: null },
+    starRating: "FIVE",
+    comment: "Teacher May is a patient teacher with strong passion in teaching which really inspired students to push themselves to do well. She will take time off for students who have questions.",
+    createTime: "2024-02-20T00:00:00Z",
+  },
+  {
+    reviewId: "3",
+    reviewer: { displayName: "Chloe Teo", profilePhotoUrl: null },
+    starRating: "FIVE",
+    comment: "I attended the sec4 amath lesson, and through the lessons i managed to improve from a F9 to B3 in 6levels. Super thankful for Teacher May and Teacher Claire for guiding me through.",
+    createTime: "2024-03-10T00:00:00Z",
+  },
+  {
+    reviewId: "4",
+    reviewer: { displayName: "JIMIN CHOI", profilePhotoUrl: null },
+    starRating: "FIVE",
+    comment: "I have been sending my daughter, who is in Primary 6, to this place for six months, and her math score has improved significantly from AL4 to AL1. Teacher May is both patient and effective.",
+    createTime: "2024-04-05T00:00:00Z",
+  },
+  {
+    reviewId: "5",
+    reviewer: { displayName: "Esther Ruth Dino", profilePhotoUrl: null },
+    starRating: "FIVE",
+    comment: "i love maythematics because the centre is very conducive and its a productive place to learn in! adding on, im under teacher lucas and he is a great teacher!!",
+    createTime: "2024-05-12T00:00:00Z",
+  },
+  {
+    reviewId: "6",
+    reviewer: { displayName: "Sarah Lim", profilePhotoUrl: null },
+    starRating: "FIVE",
+    comment: "Excellent teaching methods and very supportive teachers. My child's confidence in math has grown tremendously since joining.",
+    createTime: "2024-06-18T00:00:00Z",
+  },
+];
 
 // Star rating component
 function StarRating({ rating }: { rating: string }) {
@@ -64,8 +112,19 @@ function ReviewCard({ review }: { review: Review }) {
   const maxLength = 200;
   const shouldTruncate = review.comment && review.comment.length > maxLength;
   
+  const handleClick = (e: React.MouseEvent) => {
+    // Don't expand if clicking the "Read more" button
+    if ((e.target as HTMLElement).tagName === 'BUTTON') {
+      return;
+    }
+    window.open(GOOGLE_REVIEWS_URL, '_blank', 'noopener,noreferrer');
+  };
+  
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100 flex flex-col h-full">
+    <div 
+      onClick={handleClick}
+      className="bg-white rounded-2xl p-6 shadow-md border border-gray-100 flex flex-col h-full cursor-pointer hover:shadow-lg transition-shadow"
+    >
       {/* Header */}
       <div className="flex items-start gap-4 mb-4">
         {/* Avatar */}
@@ -138,74 +197,6 @@ function ReviewCard({ review }: { review: Review }) {
 }
 
 export default function ReviewsSection() {
-  const [reviews, setReviews] = useState<Review[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [syncedAt, setSyncedAt] = useState<string | null>(null);
-
-  useEffect(() => {
-    async function fetchReviews() {
-      try {
-        const response = await fetch("/api/reviews");
-        const data = await response.json();
-        
-        if (data.success) {
-          setReviews(data.reviews || []);
-          setSyncedAt(data.syncedAt);
-        } else {
-          setError(data.message || "Failed to load reviews");
-        }
-      } catch (err) {
-        setError("Failed to fetch reviews: " + (err instanceof Error ? err.message : "Unknown error"));
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchReviews();
-  }, []);
-
-  if (loading) {
-    return (
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[var(--neutral-bg)]">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <ReviewCardSkeleton key={i} />
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  if (error) {
-    return (
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[var(--neutral-bg)]">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center">
-            <p className="text-red-600">{error}</p>
-            <p className="mt-2 text-gray-500 text-sm">
-              Run <code className="bg-gray-200 px-2 py-1 rounded">/api/gbp/sync</code> to sync reviews.
-            </p>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  if (reviews.length === 0) {
-    return (
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[var(--neutral-bg)]">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center">
-            <p className="text-gray-600">No reviews found.</p>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[var(--neutral-bg)]">
       <div className="container mx-auto max-w-6xl">
@@ -217,11 +208,6 @@ export default function ReviewsSection() {
           <p className="text-gray-600">
             {reviews.length} reviews from Google
           </p>
-          {syncedAt && (
-            <p className="text-sm text-gray-400 mt-2">
-              Last updated: {formatDate(syncedAt)}
-            </p>
-          )}
         </div>
 
         {/* Reviews Grid */}
