@@ -102,7 +102,7 @@ blockquote.tiktok-embed section {
 }
 
 .animate-scroll-right {
-  animation: scroll-right 20s linear infinite;
+  animation: scroll-right 50s linear infinite;
 }
 
 .animate-scroll-right:hover {
