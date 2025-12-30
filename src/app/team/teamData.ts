@@ -14,7 +14,7 @@ export const teamMembers: TeamMemberData[] = [
   {
     name: "Ms Nicky",
     role: "Primary Science Teacher",
-    image: "/team/nicky.JPG",
+    image: "/team/nicky.avif",
     qualifications: [
       "15 years teaching experience",
       "Founder of Wondrous Mind Education",
@@ -30,7 +30,7 @@ export const teamMembers: TeamMemberData[] = [
   {
     name: "Ms Caroline",
     role: "Primary & Secondary Math Teacher",
-    image: "/team/carol.DNG",
+    image: "/team/carol.avif",
     qualifications: [
       "14 years teaching experience",
       "Founder of Wondrous Mind Education",
@@ -46,7 +46,7 @@ export const teamMembers: TeamMemberData[] = [
   {
     name: "Ms Jeslyn",
     role: "Secondary Math & Science Teacher",
-    image: "/team/jeslyn.DNG",
+    image: "/team/jeslyn.avif",
     qualifications: [
       "9 years teaching experience",
       "Head of Secondary Science Department",
@@ -61,7 +61,7 @@ export const teamMembers: TeamMemberData[] = [
   {
     name: "Ms Pearly",
     role: "Primary Math & Science Teacher",
-    image: "/team/pearly.DNG",
+    image: "/team/pearly.avif",
     qualifications: [
       "5 years teaching experience",
       "NUS Degree in Science",
@@ -76,7 +76,7 @@ export const teamMembers: TeamMemberData[] = [
   {
     name: "Ms Lim",
     role: "Secondary Math & Science Teacher",
-    image: "/team/jeamin.DNG",
+    image: "/team/jeamin.avif",
     qualifications: [
       "2 years teaching experience",
       "NTU Degree in Chemistry and Biological Chemistry",
@@ -90,7 +90,7 @@ export const teamMembers: TeamMemberData[] = [
   {
     name: "Ms Jovin",
     role: "Primary Science Teacher",
-    image: "/team/jovin.JPG",
+    image: "/team/jovin.avif",
     qualifications: [
       "3 years teaching experience",
       "SUSS Degree in Marketing (Undergraduate)",
@@ -105,7 +105,7 @@ export const teamMembers: TeamMemberData[] = [
   {
     name: "Mr Shawn",
     role: "Primary Math Teacher",
-    image: "/team/shawn.JPG",
+    image: "/team/shawn.avif",
     qualifications: [
       "6 months teaching experience",
       "NTU Degree in Economics (Undergraduate)",
@@ -121,7 +121,7 @@ export const teamMembers: TeamMemberData[] = [
   {
     name: "Mr Lew",
     role: "Secondary Science Teacher",
-    image: "/team/sunzhe.JPG",
+    image: "/team/sunzhe.avif",
     qualifications: [
       "2 years teaching experience",
       "NTU Degree in Environmental Earth System Science (Undergraduate)",
@@ -137,7 +137,7 @@ export const teamMembers: TeamMemberData[] = [
   {
     name: "Ms Xuan Ling",
     role: "Primary & Secondary Science Teacher",
-    image: "/team/xuanling.JPG",
+    image: "/team/xuanling.avif",
     qualifications: [
       "1 year teaching experience",
       "NUS Degree in Life Sciences (Undergraduate)",

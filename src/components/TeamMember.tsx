@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { ImageSkeleton } from "./Skeletons";
 
@@ -24,10 +24,47 @@ export default function TeamMember({
   priority = false
 }: TeamMemberProps) {
   const [imageLoading, setImageLoading] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  // Intersection Observer for scroll animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            // Unobserve after animation triggers to prevent re-triggering
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1, // Trigger when 10% of the element is visible
+        rootMargin: "0px 0px -50px 0px", // Start animation slightly before element enters viewport
+      }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div
-      className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-full"
+      ref={cardRef}
+      className={`bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-full ${
+        isVisible ? "animate-fade-in-up" : "opacity-0"
+      }`}
+      style={{
+        transition: "opacity 0.6s ease-out, transform 0.6s ease-out",
+      }}
     >
       <div className="flex flex-col sm:flex-row p-4 sm:p-5 gap-4 h-full">
         {/* Image Section */}

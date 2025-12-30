@@ -28,16 +28,22 @@ export default function TeamSection({ teamMembers }: TeamSectionProps) {
           {/* Team Grid */}
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 max-w-[1600px] mx-auto">
             {teamMembers.map((member, index) => (
-              <TeamMember
+              <div
                 key={index}
-                name={member.name}
-                role={member.role}
-                image={member.image}
-                qualifications={member.qualifications}
-                imagePosition={member.imagePosition}
-                onReadMore={() => setOpenModal(member.name)}
-                priority={index < 2}
-              />
+                style={{
+                  animationDelay: `${index * 0.1}s`, // Stagger animations for each card
+                }}
+              >
+                <TeamMember
+                  name={member.name}
+                  role={member.role}
+                  image={member.image}
+                  qualifications={member.qualifications}
+                  imagePosition={member.imagePosition}
+                  onReadMore={() => setOpenModal(member.name)}
+                  priority={index < 2}
+                />
+              </div>
             ))}
           </div>
         </div>
