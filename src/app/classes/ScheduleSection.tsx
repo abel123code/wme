@@ -34,11 +34,11 @@ export default function ScheduleSection({ scheduleData }: ScheduleSectionProps) 
   }
 
   const primaryImageUrl = scheduleData.primaryScheduleImage
-    ? urlFor(scheduleData.primaryScheduleImage).width(1400).height(800).url()
+    ? urlFor(scheduleData.primaryScheduleImage).width(1400).url()
     : null;
 
   const secondaryImageUrl = scheduleData.secondaryScheduleImage
-    ? urlFor(scheduleData.secondaryScheduleImage).width(1400).height(800).url()
+    ? urlFor(scheduleData.secondaryScheduleImage).width(1400).url()
     : null;
 
   const calendarPdfUrl = scheduleData.calendarPdf?.asset?.url || null;
@@ -74,7 +74,7 @@ export default function ScheduleSection({ scheduleData }: ScheduleSectionProps) 
                 src={primaryImageUrl}
                 alt={scheduleData.primaryScheduleAlt}
                 width={1400}
-                height={800}
+                height={2000}
                 sizes="(max-width: 768px) 100vw, 66vw"
                 className="w-2/3 h-auto"
               />
@@ -105,7 +105,7 @@ export default function ScheduleSection({ scheduleData }: ScheduleSectionProps) 
                 src={secondaryImageUrl}
                 alt={scheduleData.secondaryScheduleAlt}
                 width={1400}
-                height={800}
+                height={2000}
                 sizes="(max-width: 768px) 100vw, 66vw"
                 className="w-2/3 h-auto border-0"
               />
