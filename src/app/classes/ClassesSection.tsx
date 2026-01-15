@@ -4,19 +4,32 @@
 // This separation allows the parent page to be a Server Component,
 // reducing initial JS bundle size and hydration cost
 import { useState } from "react";
-import Image from "next/image";
 import ScienceModal from "@/components/ScienceModal";
 import MathModal from "@/components/MathModal";
 import SecScienceModal from "@/components/SecScienceModal";
 import SecMathModal from "@/components/SecMathModal";
+import ScheduleSection from "./ScheduleSection";
 
-export default function ClassesSection() {
-  const [openSection, setOpenSection] = useState<string | null>(null);
-  const [openModal, setOpenModal] = useState<string | null>(null);
-
-  const toggleSection = (section: string) => {
-    setOpenSection(openSection === section ? null : section);
+interface ScheduleData {
+  academicYear: string;
+  primaryScheduleImage: any;
+  primaryScheduleAlt: string;
+  secondaryScheduleImage: any;
+  secondaryScheduleAlt: string;
+  calendarPdf: {
+    asset: {
+      url: string;
+    };
+    filename?: string;
   };
+}
+
+interface ClassesSectionProps {
+  scheduleData?: ScheduleData | null;
+}
+
+export default function ClassesSection({ scheduleData }: ClassesSectionProps) {
+  const [openModal, setOpenModal] = useState<string | null>(null);
 
   return (
     <>
@@ -78,96 +91,7 @@ export default function ClassesSection() {
       </div>
 
       {/* Schedule Sections */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="max-w-5xl mx-auto">
-        <h2 className="text-4xl md:text-4xl font-bold text-center mb-12 text-gray-900">
-          AY2026 Class Schedule
-        </h2>
-        {/* Primary Science & Math Schedule */}
-        <div className="mb-6">
-          <button
-            onClick={() => toggleSection("primary")}
-            className="w-full bg-[#012DE8] text-white p-6 text-center hover:bg-[#021FB8] transition-colors relative rounded-lg"
-          >
-            <h2 className="text-2xl md:text-3xl font-bold">
-              Primary Science & Math schedule
-            </h2>
-            <div className="absolute left-1/2 -translate-x-1/2 -bottom-4">
-              <div
-                className={`w-0 h-0 border-l-20 border-l-transparent border-r-20 border-r-transparent border-t-20 border-t-[#012DE8] transition-transform ${
-                  openSection === "primary" ? "rotate-180" : ""
-                }`}
-              ></div>
-            </div>
-          </button>
-          {openSection === "primary" && (
-            <div className="bg-white p-6 rounded-lg flex justify-center items-center -mt-2">
-              <Image
-                src="/primary-schedule.png"
-                alt="Primary Schedule"
-                width={1400}
-                height={800}
-                sizes="(max-width: 768px) 100vw, 66vw"
-                className="w-2/3 h-auto"
-              />
-            </div>
-          )}
-        </div>
-
-        {/* Secondary Science & Math Schedule */}
-        <div className="mb-6">
-          <button
-            onClick={() => toggleSection("secondary")}
-            className="w-full bg-[#012DE8] text-white p-6 text-center hover:bg-[#021FB8] transition-colors relative rounded-lg"
-          >
-            <h2 className="text-2xl md:text-3xl font-bold">
-              Secondary Science & Math schedule
-            </h2>
-            <div className="absolute left-1/2 -translate-x-1/2 -bottom-4">
-              <div
-                className={`w-0 h-0 border-l-20 border-l-transparent border-r-20 border-r-transparent border-t-20 border-t-[#012DE8] transition-transform ${
-                  openSection === "secondary" ? "rotate-180" : ""
-                }`}
-              ></div>
-            </div>
-          </button>
-          {openSection === "secondary" && (
-            <div className="bg-white p-6 rounded-lg flex justify-center items-center">
-              <Image
-                src="/sec-schedule.png"
-                alt="Secondary Schedule"
-                width={1400}
-                height={800}
-                sizes="(max-width: 768px) 100vw, 66vw"
-                className="w-2/3 h-auto border-0"
-              />
-            </div>
-          )}
-        </div>
-
-        {/* AY 2026 Calendar */}
-        <h2 className="text-4xl md:text-4xl font-bold text-center mb-6 mt-6 text-gray-900">
-          AY2026 Calendar
-        </h2>
-        <div className="mb-6">
-          <button
-            onClick={() => {
-              const link = document.createElement('a');
-              link.href = '/Academic Year 2026 Calendar.pdf';
-              link.download = 'Academic Year 2026 Calendar.pdf';
-              document.body.appendChild(link);
-              link.click();
-              document.body.removeChild(link);
-            }}
-            className="w-full bg-[#012DE8] text-white p-6 text-center hover:bg-[#021FB8] transition-colors relative rounded-lg"
-          >
-            <h2 className="text-2xl md:text-3xl font-bold">
-              Click Here To Download
-            </h2>
-          </button>
-        </div>
-        </div>
-      </div>
+      <ScheduleSection scheduleData={scheduleData || null} />
 
       {/* Render only the active modal instead of all modals upfront */}
       {/* This reduces initial render cost and JS bundle size */}

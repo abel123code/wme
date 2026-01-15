@@ -2,8 +2,46 @@
 // This reduces initial JS bundle size and improves performance
 import PageHero from "@/components/PageHero";
 import ClassesSection from "./ClassesSection";
+import { client } from "@/sanity/client";
 
-export default function ClassesPage() {
+interface ScheduleData {
+  academicYear: string;
+  primaryScheduleImage: any;
+  primaryScheduleAlt: string;
+  secondaryScheduleImage: any;
+  secondaryScheduleAlt: string;
+  calendarPdf: {
+    asset: {
+      url: string;
+    };
+    filename?: string;
+  };
+}
+
+const SCHEDULES_QUERY = `*[_type == "schedulesPage"][0]{
+  _id,
+  academicYear,
+  primaryScheduleImage,
+  primaryScheduleAlt,
+  secondaryScheduleImage,
+  secondaryScheduleAlt,
+  calendarPdf{
+    asset->{
+      url
+    },
+    filename
+  }
+}`;
+
+const options = { next: { revalidate: 30 } };
+
+export default async function ClassesPage() {
+  const scheduleData = await client.fetch<ScheduleData | null>(
+    SCHEDULES_QUERY,
+    {},
+    options
+  );
+
   return (
     <main className="relative bg-white">
       <PageHero 
@@ -14,7 +52,7 @@ export default function ClassesPage() {
       />
 
       {/* Client Component handles all interactive state and modal rendering */}
-      <ClassesSection />
+      <ClassesSection scheduleData={scheduleData || null} />
     </main>
   );
 }
