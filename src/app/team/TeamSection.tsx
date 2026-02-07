@@ -6,7 +6,7 @@
 import { useState } from "react";
 import TeamMember from "@/components/TeamMember";
 import TeamMemberModal from "@/components/TeamMemberModal";
-import type { TeamMemberData } from "@data/TeamMemberData"
+import type { TeamMemberData } from "@/data/teamData";
 
 interface TeamSectionProps {
   teamMembers: TeamMemberData[];
