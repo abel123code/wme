@@ -27,6 +27,10 @@ export const faqsData: FAQItem[] = [
     answer: "We cap our classes at maximum 8 - 10 students per class.",
   },
   {
+    question: "Maximum number of make up classes arranged in a month?",
+    answer: "Up to 2 make up lessons can be arranged per month. Additional requests may be reviwed on a case by case basis, and a temporary class switch may be considered where suitable.",
+  },
+  {
     question: "Are the lessons aligned with the MOE syllabus?",
     answer: "Yes! Our lessons follow the MOE syllabus, covering all key topics while providing extra practice and exam-focused guidance to build confidence.",
   },

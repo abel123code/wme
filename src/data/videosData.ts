@@ -12,11 +12,11 @@ export const videos: Video[] = [
   },
   {
     title: "Study Tip",
-    videoId: "7448139951562181909", // From https://vt.tiktok.com/ZSPE29fJf/
+    videoId: "7474145532521303303", // From https://vt.tiktok.com/ZSPE29fJf/
   },
   {
     title: "Opening Our New Units",
-    videoId: "7445503871717215495", // From https://vt.tiktok.com/ZSPE2m5Gt/
+    videoId: "7455973754703760648", // From https://vt.tiktok.com/ZSPE2m5Gt/
   },
 ];
 
