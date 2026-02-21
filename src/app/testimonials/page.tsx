@@ -8,7 +8,7 @@ export default function TestimonialsPage() {
       <PageHero
         title="Testimonials"
         subtitle="Families share how our classes build confidence, clarity, and results."
-        image="/team-picture.JPG"
+        image="/hero-image-2.avif"
         imageAlt="Happy students in class"
       />
 

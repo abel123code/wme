@@ -9,7 +9,7 @@ export default function MathTuitionProgrammes() {
         </h2>
         
         <p className="text-lg text-[#334155] mb-8 leading-relaxed">
-          We offer Primary, Secondary, and Junior College Math/Science Tuition to help students excel with confidence. Our programmes are tailored to each level, focusing on skills, understanding, and exam readiness.
+          We offer Primary and Secondary Math & Science Tuition to help students excel with confidence. Our programmes are tailored to each level, focusing on skills, understanding, and exam readiness.
         </p>
         
         <Link

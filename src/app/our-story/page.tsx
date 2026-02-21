@@ -1,5 +1,5 @@
-import Image from "next/image";
 import PageHero from "@/components/PageHero";
+import ScrollReveal from "@/components/ScrollReveal";
 import { timelineItems } from "@/data/ourStoryData";
 
 export default function OurStoryPage() {
@@ -8,7 +8,7 @@ export default function OurStoryPage() {
       <PageHero
         title="Our Story"
         subtitle="From a single classroom to a thriving learning community, each chapter reflects our commitment to students."
-        image="/team-picture.JPG"
+        image="/hero-image-2.avif"
         imageAlt="Students and teachers collaborating"
       />
 
@@ -34,20 +34,22 @@ export default function OurStoryPage() {
                         aria-hidden="true"
                       />
 
-                      <div
+                      <ScrollReveal
+                        delay={index * 120}
                         className={`pl-12 md:pl-0 ${
                           isLeft
                             ? "md:col-start-1 md:pr-12 md:text-right"
                             : "md:col-start-2 md:pl-12"
                         }`}
                       >
-                        <article className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-shadow">
+                        <article className="bg-white rounded-2xl border-l-4 border-l-[#012DE8] border border-gray-100 p-8 shadow-sm hover:shadow-md transition-shadow">
+                          {/* Large Year Display + Tag (stacked, same start) */}
                           <div
-                            className={`flex flex-wrap items-center gap-3 ${
-                              isLeft ? "md:justify-end" : ""
+                            className={`flex flex-col items-start gap-2 ${
+                              isLeft ? "md:items-end" : ""
                             }`}
                           >
-                            <p className="text-2xl font-bold text-[#012DE8]">
+                            <p className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-[#012DE8] to-[#00D6FF] bg-clip-text text-transparent">
                               <time>{item.year}</time>
                             </p>
                             <span className="px-3 py-1 rounded-full text-xs font-semibold bg-[#E8ECFF] text-[#012DE8]">
@@ -55,8 +57,15 @@ export default function OurStoryPage() {
                             </span>
                           </div>
 
+                          {/* Decorative underline */}
+                          <div
+                            className={`mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-[#012DE8] to-[#00D6FF] ${
+                              isLeft ? "md:ml-auto" : ""
+                            }`}
+                          />
+
                           <h3
-                            className={`mt-3 text-xl font-bold text-gray-900 ${
+                            className={`mt-4 text-xl font-bold text-gray-900 ${
                               isLeft ? "md:text-right" : ""
                             }`}
                           >
@@ -71,19 +80,28 @@ export default function OurStoryPage() {
                             {item.description}
                           </p>
 
-                          <div className="mt-5">
-                            <div className="relative h-40 w-full overflow-hidden rounded-xl bg-[#E8ECFF]">
-                              <Image
-                                src={item.image}
-                                alt={`${item.title} milestone`}
-                                fill
-                                sizes="(max-width: 768px) 100vw, 520px"
-                                className="object-cover"
-                              />
-                            </div>
+                          {/* Stats/Highlights Row */}
+                          <div
+                            className={`mt-6 flex flex-wrap gap-3 ${
+                              isLeft ? "md:justify-end" : ""
+                            }`}
+                          >
+                            {item.highlights.map((highlight) => (
+                              <div
+                                key={highlight.label}
+                                className="bg-[#E8ECFF] rounded-xl px-4 py-3 text-center min-w-[80px]"
+                              >
+                                <p className="text-lg font-bold text-[#012DE8]">
+                                  {highlight.value}
+                                </p>
+                                <p className="text-xs text-[#64748B] mt-0.5">
+                                  {highlight.label}
+                                </p>
+                              </div>
+                            ))}
                           </div>
                         </article>
-                      </div>
+                      </ScrollReveal>
                     </li>
                   );
                 })}

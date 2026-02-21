@@ -7,7 +7,7 @@ export default function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0 overflow-hidden">
         <Image
-          src="/team-picture.JPG"
+          src="/hero-image-2.avif"
           alt="Hero background"
           fill
           priority
@@ -18,14 +18,18 @@ export default function Hero() {
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center pt-16 md:pt-20">
-        <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-[40px] font-bold leading-tight mb-4 sm:mb-6 md:mb-8 text-white animate-fadeInUp">
-          Helping Primary & Secondary Students learn{" "}
+      <div className="relative z-10 container px-4 sm:px-6 lg:px-8 text-center pt-36">
+        {/* <h1 className="text-base sm:text-2xl md:text-3xl lg:text-[40px] font-bold leading-tight mb-4 sm:mb-6 md:mb-8 text-white animate-fadeInUp">
+          Helping Primary & Secondary Students
           <br />
-          <span className="text-[#00D6FF]">Math</span>{" "}
-          & <span className="text-[#E83789]">Science</span>{" "}
-          with <span>clarity</span>,{" "}
-          and confidence
+          learn <span className="text-[#00D6FF]">Math</span> & <span className="text-[#E83789]">Science</span>
+          <br />
+          with <span>clarity</span>, and confidence
+        </h1> */}
+        <h1 className="text-base sm:text-2xl md:text-2xl lg:text-4xl font-bold leading-tight mb-4 sm:mb-6 md:mb-8 text-white animate-fadeInUp">
+          Helping Primary & Secondary Students <br />
+          learn Math & Science <br />
+          with clarity and confidence
         </h1>
 
         <Link

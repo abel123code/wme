@@ -8,7 +8,7 @@ interface WhatSetsUsApartProps {
 
 export default function WhatSetsUsApart({ 
   image1 = 'classroom.PNG', 
-  image2 = 'team-picture.JPG', 
+  image2 = 'hero-image-2.avif', 
   image3 = 'worksheets.JPG' 
 }: WhatSetsUsApartProps = {}) {
   return (
@@ -60,7 +60,8 @@ export default function WhatSetsUsApart({
                   alt="Passionate & dedicated teachers"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 33vw, 400px"
-                  className="object-cover"
+                  className="object-cover object-center"
+                  style={{ objectPosition: '42%' }}
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center">

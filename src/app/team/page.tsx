@@ -9,7 +9,7 @@ export default function TeamPage() {
     <main className="relative bg-white">
       <PageHero
         title="Our Team"
-        image="/team/our-team.JPG"
+        image="/hero-image-2.avif"
         imageAlt="Team hero background"
       />
 

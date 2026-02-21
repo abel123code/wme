@@ -7,9 +7,10 @@ export default function FAQsPage() {
   return (
     <main className="relative bg-white">
       <PageHero 
-        image="/faq-banner.jpg"
-        imageAlt="FAQs banner"
-        showOverlay={false}
+        title="FAQs"
+        image="/hero-image-2.avif"
+        imageAlt="FAQs hero background"
+        subtitle="Find answers to common questions about our classes and programmes."
       />
       <FAQs faqs={faqsData} />
     </main>

@@ -116,18 +116,18 @@ blockquote.tiktok-embed section {
 
 /* Hero image responsive positioning */
 .hero-image-position {
-  object-position: 40% 35px; /* Mobile */
+  object-position: 40% 70px; /* Mobile */
 }
 
 @media (min-width: 768px) {
   .hero-image-position {
-    object-position: center 20px; /* Tablet */
+    object-position: center 50px; /* Tablet */
   }
 }
 
 @media (min-width: 1024px) {
   .hero-image-position {
-    object-position: center 0px; /* Desktop */
+    object-position: center 60px; /* Desktop */
   }
 }
 
