@@ -81,8 +81,8 @@ export const teamMembers: TeamMemberData[] = [
   },
   {
     name: "Mr Darryl",
-    role: "Secondary Math & Science Teacher",
-    image: "/team/jeamin.avif",
+    role: "Primary & Secondary Science & Math Teacher",
+    image: "/team/darryl.avif",
     qualifications: [
       "3 years teaching experience",
       "Master’s degree in Education from National Institute of Education (NIE)",
